@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Homebrew – Verwaltung</title>
+<style>
+:root{
+  --bg:#0b0f14; --panel:#121826; --panel2:#0f1623; --text:#e8eef7; --muted:#a9b6c7;
+  --accent:#4ea3ff; --border:#223047; --codebg:#0b1220; --ok:#66e3a1;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  background:var(--bg); color:var(--text); line-height:1.5;
+}
+header{
+  padding:28px 18px 16px; border-bottom:1px solid var(--border);
+  background:linear-gradient(180deg, rgba(78,163,255,0.10), rgba(0,0,0,0));
+}
+.container{max-width:980px; margin:0 auto; padding:0 18px 36px}
+h1{margin:0 0 6px; font-size:26px}
+.subtitle{color:var(--muted); margin:0}
+.section{margin-top:22px; padding:18px; background:var(--panel); border:1px solid var(--border); border-radius:16px}
+.section h2{margin:0 0 10px; font-size:18px}
+.section p{margin:6px 0 10px}
+.codeblock{
+  margin:10px 0; border:1px solid var(--border); border-radius:14px; overflow:hidden;
+  background:var(--codebg);
+}
+.codehead{
+  display:flex; justify-content:space-between; align-items:center;
+  padding:10px; border-bottom:1px solid var(--border); background:rgba(255,255,255,0.02);
+}
+.copybtn{
+  border:1px solid var(--border); background:rgba(78,163,255,0.10); color:var(--text);
+  padding:7px 10px; border-radius:10px; cursor:pointer; font-size:12px;
+}
+.copybtn:hover{border-color:rgba(78,163,255,0.65)}
+pre{
+  margin:0; padding:12px; overflow:auto; white-space:pre-wrap; word-break:break-word;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+  font-size:13px; color:#d7e7ff;
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <h1>Homebrew – Verwaltung</h1>
+    <p class="subtitle">Formulas, Casks, Services · macOS 26 · Apple Silicon</p>
+  </div>
+</header>
+
+<div class="container">
+  <section class="section">
+    <h2>Formulas (CLI‑Pakete)</h2>
+
+    <div class="codeblock">
+      <div class="codehead">
+        <strong>Pakete suchen</strong>
+        <button class="copybtn" onclick="copyText('v1', this)">Kopieren</button>
+      </div>
+      <pre id="v1">brew search &lt;name&gt;</pre>
+    </div>
+
+    <div class="codeblock">
+      <div class="codehead">
+        <strong>Informationen anzeigen</strong>
+        <button class="copybtn" onclick="copyText('v2', this)">Kopieren</button>
+      </div>
+      <pre id="v2">brew info &lt;formula&gt;</pre>
+    </div>
+
+    <div class="codeblock">
+      <div class="codehead">
+        <strong>Installieren</strong>
+        <button class="copybtn" onclick="copyText('v3', this)">Kopieren</button>
+      </div>
+      <pre id="v3">brew install &lt;formula&gt;</pre>
+    </div>
+
+    <div class="codeblock">
+      <div class="codehead">
+        <strong>Deinstallieren</strong>
+        <button class="copybtn" onclick="copyText('v4', this)">Kopieren</button>
+      </div>
+      <pre id="v4">brew uninstall &lt;formula&gt;</pre>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Casks (Apps)</h2>
+
+    <div class="codeblock">
+      <div class="codehead">
+        <strong>App installieren</strong>
+        <button class="copybtn" onclick="copyText('c1', this)">Kopieren</button>
+      </div>
+      <pre id="c1">brew install --cask &lt;cask&gt;</pre>
+    </div>
+
+    <div class="codeblock">
+      <div class="codehead">
+        <strong>App deinstallieren</strong>
+        <button class="copybtn" onclick="copyText('c2', this)">Kopieren</button>
+      </div>
+      <pre id="c2">brew uninstall --cask &lt;cask&gt;</pre>
+    </div>
+
+    <div class="codeblock">
+      <div class="codehead">
+        <strong>Mit Datenresten entfernen</strong>
+        <button class="copybtn" onclick="copyText('c3', this)">Kopieren</button>
+      </div>
+      <pre id="c3">brew uninstall --cask --zap &lt;cask&gt;</pre>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Services & Taps</h2>
+
+    <div class="codeblock">
+      <div class="codehead">
+        <strong>Services anzeigen</strong>
+        <button class="copybtn" onclick="copyText('s1', this)">Kopieren</button>
+      </div>
+      <pre id="s1">brew services list</pre>
+    </div>
+
+    <div class="codeblock">
+      <div class="codehead">
+        <strong>Tap hinzufügen</strong>
+        <button class="copybtn" onclick="copyText('t1', this)">Kopieren</button>
+      </div>
+      <pre id="t1">brew tap &lt;user/repo&gt;</pre>
+    </div>
+
+    <div class="codeblock">
+      <div class="codehead">
+        <strong>Tap entfernen</strong>
+        <button class="copybtn" onclick="copyText('t2', this)">Kopieren</button>
+      </div>
+      <pre id="t2">brew untap &lt;user/repo&gt;</pre>
+    </div>
+  </section>
+</div>
+
+<script>
+function copyText(id, btn){
+  const el=document.getElementById(id);
+  const txt=el.innerText;
+  navigator.clipboard.writeText(txt).then(()=>{
+    const old=btn.innerText;
+    btn.innerText="Kopiert";
+    btn.style.borderColor= "#66e3a1";
+    setTimeout(()=>{btn.innerText=old; btn.style.borderColor="";},900);
+  });
+}
+</script>
+</body>
+</html>

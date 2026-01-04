@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Homebrew – Installation &amp; Grundbefehle</title>
+<style>
+:root{
+  --bg:#0b0f14; --panel:#121826; --panel2:#0f1623; --text:#e8eef7; --muted:#a9b6c7;
+  --accent:#4ea3ff; --warn:#ffcc66; --danger:#ff6b6b; --ok:#66e3a1; --border:#223047;
+  --codebg:#0b1220;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  background:var(--bg); color:var(--text); line-height:1.5;
+}
+header{
+  padding:28px 18px 14px; border-bottom:1px solid var(--border);
+  background:linear-gradient(180deg, rgba(78,163,255,0.10), rgba(0,0,0,0));
+}
+.container{max-width:980px; margin:0 auto; padding:0 18px 36px}
+h1{margin:0 0 6px; font-size:26px; letter-spacing:0.2px}
+.subtitle{color:var(--muted); margin:0}
+.badgebar{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+.badge{
+  font-size:12px; color:var(--muted); border:1px solid var(--border);
+  padding:6px 10px; border-radius:999px; background:rgba(255,255,255,0.03);
+}
+nav{
+  margin:18px 0 0; display:flex; gap:10px; flex-wrap:wrap;
+}
+nav a{
+  color:var(--text); text-decoration:none; border:1px solid var(--border);
+  padding:8px 10px; border-radius:10px; background:rgba(255,255,255,0.02);
+}
+nav a:hover{border-color:rgba(78,163,255,0.65)}
+.section{margin-top:22px; padding:18px; background:var(--panel); border:1px solid var(--border); border-radius:16px}
+.section h2{margin:0 0 10px; font-size:18px}
+.section h3{margin:16px 0 8px; font-size:15px; color:var(--text)}
+p{margin:10px 0; color:var(--text)}
+ul{margin:10px 0 0 18px; color:var(--text)}
+li{margin:6px 0}
+.callout{
+  padding:12px 12px; border-radius:14px; border:1px solid var(--border); background:var(--panel2);
+  margin:12px 0;
+}
+.callout strong{display:block; margin-bottom:6px}
+.callout.warning{border-color:rgba(255,204,102,0.45);}
+.callout.warning strong{color:var(--warn)}
+.callout.danger{border-color:rgba(255,107,107,0.45);}
+.callout.danger strong{color:var(--danger)}
+.callout.ok{border-color:rgba(102,227,161,0.35);}
+.callout.ok strong{color:var(--ok)}
+.codeblock{
+  margin:10px 0; border:1px solid var(--border); border-radius:14px; overflow:hidden;
+  background:var(--codebg);
+}
+.codehead{
+  display:flex; justify-content:space-between; align-items:center; gap:10px;
+  padding:10px 10px; border-bottom:1px solid var(--border); background:rgba(255,255,255,0.02);
+}
+.codehead .label{font-size:12px; color:var(--muted)}
+.copybtn{
+  border:1px solid var(--border); background:rgba(78,163,255,0.10); color:var(--text);
+  padding:7px 10px; border-radius:10px; cursor:pointer; font-size:12px;
+}
+.copybtn:hover{border-color:rgba(78,163,255,0.65)}
+pre{
+  margin:0; padding:12px 12px; overflow:auto; white-space:pre-wrap; word-break:break-word;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+  font-size:13px; color:#d7e7ff;
+}
+.kv{display:grid; grid-template-columns: 220px 1fr; gap:8px 12px; margin-top:10px}
+.kv div{padding:10px 10px; border:1px solid var(--border); border-radius:12px; background:rgba(255,255,255,0.02)}
+.kv .k{color:var(--muted); font-size:12px; padding-bottom:2px}
+.footer{margin-top:22px; color:var(--muted); font-size:12px}
+hr{border:0; border-top:1px solid var(--border); margin:16px 0}
+</style>
+</head>
+<body>
+<header>
+<div class="container">
+<h1>Homebrew – Installation &amp; Grundbefehle</h1>
+</div>
+</header>
+<div class="container">
+<main>
+
+<h2>1. Installation</h2>
+<div class="codeblock">
+<div class="codehead">
+<div class="label">Installation</div>
+<button class="copybtn" onclick="copyTextFrom('i1', this)">Kopieren</button>
+</div>
+<pre id="i1">/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</pre>
+</div>
+<p>Offizielles Installationsskript. Apple‑Silicon legt <code>/opt/homebrew</code> an.</p>
+
+
+<h2>2. Shell‑Einbindung</h2>
+<div class="codeblock">
+<div class="codehead">
+<div class="label">Installation</div>
+<button class="copybtn" onclick="copyTextFrom('i2', this)">Kopieren</button>
+</div>
+<pre id="i2">echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' &gt;&gt; ~/.zprofile</pre>
+</div>
+<div class="codeblock">
+<div class="codehead">
+<div class="label">Installation</div>
+<button class="copybtn" onclick="copyTextFrom('i3', this)">Kopieren</button>
+</div>
+<pre id="i3">eval "$(/opt/homebrew/bin/brew shellenv)"</pre>
+</div>
+<p>Erste Zeile dauerhaft, zweite sofort aktiv.</p>
+
+<section class="grid-2">
+
+<h2>3. Prüfung</h2>
+<div class="codeblock">
+<div class="codehead">
+<div class="label">Installation</div>
+<button class="copybtn" onclick="copyTextFrom('i4', this)">Kopieren</button>
+</div>
+<pre id="i4">brew doctor</pre>
+</div>
+<div class="codeblock">
+<div class="codehead">
+<div class="label">Installation</div>
+<button class="copybtn" onclick="copyTextFrom('i5', this)">Kopieren</button>
+</div>
+<pre id="i5">brew --version</pre>
+</div>
+<h2>4. Updates</h2>
+<div class="codeblock">
+<div class="codehead">
+<div class="label">Installation</div>
+<button class="copybtn" onclick="copyTextFrom('i6', this)">Kopieren</button>
+</div>
+<pre id="i6">brew update</pre>
+</div>
+<div class="codeblock">
+<div class="codehead">
+<div class="label">Installation</div>
+<button class="copybtn" onclick="copyTextFrom('i7', this)">Kopieren</button>
+</div>
+<pre id="i7">brew upgrade</pre>
+</div>
+<div class="codeblock">
+<div class="codehead">
+<div class="label">Installation</div>
+<button class="copybtn" onclick="copyTextFrom('i8', this)">Kopieren</button>
+</div>
+<pre id="i8">brew cleanup</pre>
+</div>
+<p><code>cleanup</code> entfernt alte Versionen und Downloads.</p>
+
+</section>
+</main>
+</div>
+<script>
+function copyTextFrom(id, btn){
+  const el = document.getElementById(id);
+  const txt = el ? el.innerText : "";
+  navigator.clipboard.writeText(txt).then(() => {
+    const old = btn.innerText;
+    btn.innerText = "Kopiert";
+    setTimeout(()=> btn.innerText = old, 900);
+  });
+}
+</script>
+</body>
+</html>
